@@ -11,5 +11,21 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
+    
+    <%= form_for(Commentpost.new) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <input type="hidden" name="id" value="<%= micropost.id %>">
+      <%= link_to "View the post", micropost %>
+    <% end %>
+
+    <%= form_for(Commentpost.new) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <input type="hidden" name="id" value="<%= micropost.id %>">
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control",  placeholder: "Compose new comment...", rows: "5"  %>
+      </div>
+      <%= f.submit "Comment", class: "btn btn-primary pull-right" %>
+    <% end %>
+
   </span>
 </li>
